@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+    reverseproxy:
+        image: archonr/reverseproxy
+        ports:
+            - 80:80
+        restart: always
+ 
+    user1:
+        depends_on:
+            - reverseproxy
+        image: archonr/user1
+        restart: always
+ 
+    user2:
+        depends_on:
+            - reverseproxy
+        image: archonr/user2
+        restart: always
